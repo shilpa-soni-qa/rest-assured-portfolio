@@ -1,10 +1,12 @@
 import io.restassured.RestAssured;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.security.PublicKey;
 
 import static io.restassured.RestAssured.*;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.*;
 
 public class UserApiTest extends BaseTest{
@@ -157,6 +159,58 @@ public class UserApiTest extends BaseTest{
                 .then()
                 .statusCode(200)
                 .body("size()",equalTo(10));
+
+    }
+
+    /*
+    *  Interview Answer — Schema Validation
+
+"I use JSON Schema Validation in REST Assured to verify the response structure.
+*  I create a JSON schema file that defines the expected data types and required fields.
+* Then I use matchesJsonSchemaInClasspath() to validate the response against the schema.
+* This catches bugs where API returns correct values but wrong data types!"*/
+    @Test
+    public  void testUserSchemaValidation(){
+        given()
+                .when()
+                .get("/users/1")
+                .then()
+                .statusCode(200)
+                .body(matchesJsonSchemaInClasspath("user-schema.json"));
+
+    }
+
+
+    @Test
+    public void testApiChaining(){
+        // Step 1 — Create user and extract ID
+        String requestBody="{\n" +
+                "  \"name\": \"Shilpa Soni\",\n" +
+                "  \"email\": \"shilpasoni4991@gmail.com\"\n" +
+                "}";
+
+        int userId=given()
+                .spec(requestSpec)
+                .body(requestBody)
+                .when()
+                .post("/users")
+                .then()
+                .statusCode(201)
+                .extract().path("id");
+
+        System.out.println("Created user ID :" + userId);
+
+        // Step 2 — Use extracted ID in next request
+       /* given()
+                .when()
+                .get("/users/"+ userId)
+                .then()
+                .statusCode(200);
+                */
+        System.out.println("Chaining successful! Used ID: " + userId);
+        Assert.assertNotNull(userId);
+
+
 
     }
 }
