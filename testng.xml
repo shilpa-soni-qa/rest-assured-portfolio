@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="REST Assured Portfolio Suite">
+
+    <test name="User API Tests">
+        <classes>
+            <class name="UserApiTest"/>
+        </classes>
+    </test>
+
+    <test name="Post API Tests">
+        <classes>
+            <class name="PostApiTest"/>
+        </classes>
+    </test>
+
+</suite>
