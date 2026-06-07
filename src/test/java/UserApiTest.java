@@ -2,7 +2,10 @@ import io.restassured.RestAssured;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import java.security.PublicKey;
 
 import static io.restassured.RestAssured.*;
@@ -13,6 +16,9 @@ public class UserApiTest extends BaseTest{
 
 
     @Test
+    @Story("Get Users")
+    @Description("Verify GET all users returns 200 and 10 users")
+    @Severity(SeverityLevel.CRITICAL)
     public void testGetAllUsers() {
         given()
                 .when()
@@ -23,6 +29,9 @@ public class UserApiTest extends BaseTest{
     }
 
     @Test
+    @Story("Get Users")
+    @Description("Verify GET  single user returns correct user details")
+    @Severity(SeverityLevel.CRITICAL)
     public void testGetSingleUser() {
         given()
                 .when()
