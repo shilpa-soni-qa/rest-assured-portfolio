@@ -1,3 +1,5 @@
+[![REST Assured API Tests](https://github.com/shilpa-soni-qa/rest-assured-portfolio/actions/workflows/main.yml/badge.svg)](https://github.com/shilpa-soni-qa/rest-assured-portfolio/actions/workflows/main.yml)
+
 # REST Assured Portfolio — Shilpa Soni
 
 REST API Testing using REST Assured (Java) + TestNG
