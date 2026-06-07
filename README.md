@@ -51,8 +51,8 @@ REST API Testing using REST Assured (Java) + TestNG
 - TestNG XML suite runner
 
 ## 📊 Test Results
-- Total Tests: 14
-- Passing: 14
+- Total Tests: 19
+- Passing: 19
 - Failing: 0
 
 ## 🔗 How to Run
