@@ -14,4 +14,10 @@
         </classes>
     </test>
 
+    <test name="Data Driven Tests">
+        <classes>
+            <class name="DataDrivenTest"/>
+        </classes>
+    </test>
+
 </suite>
